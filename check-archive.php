@@ -16,7 +16,7 @@ echo "archive {$zipName} contains: {$checkZip->numFiles}" . PHP_EOL;
 
 /**
  * @param $code
- * @return int|null|string
+ * @return string
  */
 function getReturnCodeConstant($code)
 {
@@ -24,8 +24,9 @@ function getReturnCodeConstant($code)
     $constants = $zipArchive->getConstants();
 
     $constName = null;
+
     foreach ($constants as $name => $value) {
-        if ($value == $code) {
+        if ('ER' == substr($name, 0,2) && $value == $code) {
             $constName = $name;
             break;
         }
