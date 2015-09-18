@@ -12,5 +12,7 @@ before_script:
   - dd if=/dev/urandom of=sample.txt bs=64M count=16
 
 script:
+  - df -h
   - create-archive.php
+  - ls -al
   - check-archive.php test-archive.zip
