@@ -7,9 +7,29 @@ $checkZip = new ZipArchive();
 $openReturn = $checkZip->open($zipName, \ZipArchive::CHECKCONS);
 
 if ($openReturn !== true) {
-    throw new \Exception("could not open archive, failed with code {$openReturn}");
-    exit(1);
+    $constantName = getReturnCodeConstant($openReturn);
+    throw new \Exception("could not open archive, failed with code {$openReturn} ({$constantName})");
 }
 
 echo $checkZip->getStatusString() . PHP_EOL;
 echo "archive {$zipName} contains: {$checkZip->numFiles}" . PHP_EOL;
+
+/**
+ * @param $code
+ * @return int|null|string
+ */
+function getReturnCodeConstant($code)
+{
+    $zipArchive = new ReflectionClass ('ZipArchive');
+    $constants = $zipArchive->getConstants();
+
+    $constName = null;
+    foreach ($constants as $name => $value) {
+        if ($value == $code) {
+            $constName = $name;
+            break;
+        }
+    }
+
+    return $constName;
+}
