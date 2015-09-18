@@ -13,6 +13,5 @@ before_script:
 
 script:
   - df -h
-  - create-archive.php
-  - ls -al
-  - check-archive.php test-archive.zip
+  - ./create-archive.php
+  - ./check-archive.php test-archive.zip
