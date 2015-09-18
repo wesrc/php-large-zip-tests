@@ -26,7 +26,7 @@ function getReturnCodeConstant($code)
     $constName = null;
 
     foreach ($constants as $name => $value) {
-        if ('ER' == substr($name, 0,2) && $value == $code) {
+        if ('ER' == substr($name, 0, 2) && $value == $code) {
             $constName = $name;
             break;
         }
