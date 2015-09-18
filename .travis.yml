@@ -1,0 +1,19 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7
+
+matrix:
+  fast_finish: true
+
+before_script:
+  - dd if=/dev/urandom of=sample1.txt bs=64M count=16
+  - dd if=/dev/urandom of=sample2.txt bs=64M count=16
+  - dd if=/dev/urandom of=sample3.txt bs=64M count=16
+  - dd if=/dev/urandom of=sample4.txt bs=64M count=16
+  - dd if=/dev/urandom of=sample5.txt bs=64M count=16
+
+script:
+  - create-archive.php
