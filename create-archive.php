@@ -6,25 +6,25 @@ $sampleFilePath = realpath('./sample.txt');
 
 foreach ([0, 1, 2, 3, 4, 5] as $iteration) {
 
-    echo "adding {$sampleFilePath} to archive" . PHP_EOL;
 
     $openReturn = $zip->open('./test-archive.zip', ZipArchive::CREATE);
-
     if ($openReturn !== true) {
-        printf('Failed with code %d', $openReturn) . PHP_EOL;
-    } else {
-
-        $zip->addFile(
-            $sampleFilePath,
-            "test/sample{$iteration}.txt"
-        );
+        throw new \Exception("could not open archive, failed with code {$openReturn}");
+        exit(1);
     }
+
+    echo "{$zip->numFiles} already in archive" . PHP_EOL;
+    echo "adding {$sampleFilePath} to archive" . PHP_EOL;
+
+    $zip->addFile(
+        $sampleFilePath,
+        "test/sample{$iteration}.txt"
+    );
 
     $closeReturn = $zip->close();
 
-    echo $zip->numFiles . PHP_EOL;
     if (!$closeReturn) {
-        throw new \Exception('something went wrong');
+        throw new \Exception('could not close archive');
         exit(1);
     }
 }
