@@ -13,7 +13,8 @@ before_script:
   - dd if=/dev/urandom of=sample2.txt bs=64M count=16
   - dd if=/dev/urandom of=sample3.txt bs=64M count=16
   - dd if=/dev/urandom of=sample4.txt bs=64M count=16
-  - dd if=/dev/urandom of=sample5.txt bs=64M count=16
+  - dd if=/dev/urandom of=sample5.txt bs=64M count=1
 
 script:
   - create-archive.php
+  - check-archive.php test-archive.zip
