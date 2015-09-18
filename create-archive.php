@@ -2,10 +2,10 @@
 <?php
 
 $zip = new ZipArchive();
+$sampleFilePath = realpath('./sample.txt');
 
-foreach ([1, 2, 3, 4, 5] as $iteration) {
+foreach ([0, 1, 2, 3, 4, 5] as $iteration) {
 
-    $sampleFilePath = realpath("./sample{$iteration}.txt");
     echo "adding {$sampleFilePath} to archive" . PHP_EOL;
 
     $openReturn = $zip->open('./test-archive.zip', ZipArchive::CREATE);
