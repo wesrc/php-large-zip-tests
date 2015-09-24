@@ -6,8 +6,8 @@ which landed in version 1.11.0 (https://pecl.php.net/package-info.php?package=zi
 big archives (exceeding 2gb) should not be a problem.
 
 ## Problems with big archives [![Build Status](https://travis-ci.org/wesrc/php-large-zip-tests.svg)](https://travis-ci.org/wesrc/php-large-zip-tests)
-When creating archives bigger than 4GB (somewehere around 4,3GB | 2^32 bytes?)
-archives becomde corrupt :(
+When creating archives bigger than 4GB (somewhere around 4,3GB | 2^32 bytes?)
+archives become corrupt :(
 
 As we did not find any way to solve the described issue, writing a test script that could be run on travis-ci 
 against several recent PHP Versions and tried by others seemed like a good idea.
